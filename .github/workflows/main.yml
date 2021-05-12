@@ -15,8 +15,8 @@ jobs:
       - name: Install and Build
         run: |
           yarn
-          yarn build --base /vue3slidev
-          
+          yarn build --base /vue3slidev/
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.3
         with:

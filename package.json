@@ -8,7 +8,9 @@
   "dependencies": {
     "@slidev/cli": "^0.8.1",
     "@slidev/theme-default": "*",
-    "@slidev/theme-seriph": "*",
+    "@slidev/theme-seriph": "*"
+  },
+  "devDependencies": {
     "playwright-chromium": "^1.11.0"
   },
   "name": "vue3slidev"
