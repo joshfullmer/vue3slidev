@@ -1,3 +1,7 @@
+---
+download: true
+---
+
 # Vue 3 at Keap
 
 Let's do it!
