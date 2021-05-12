@@ -25,3 +25,9 @@ layout: center
 - Performance
 - Composition API
 - Other new features
+
+---
+
+# Migration
+
+[Link](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat)
