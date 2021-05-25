@@ -204,13 +204,189 @@ NOTE: You need to define which top level element inherits attributes
 </div>
 
 ---
-layout: statement
+layout: section
 ---
 
 # Composition API
 
 ---
 
+# Example Component
+
+```html
+<template>
+    <button @click="increment">+</button>
+    <span>Count^2 {\{ countSquared }}</span>
+</template>
+```
+
+<div v-click class="pt-4">
+Multiple root nodes! 🎉
+</div>
+
+---
+
+# Object API vs. Composition API
+
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+
+### Object API
+
+```ts {all|2-4|10-14|5-9|all}
+export default {
+    data() {
+        return { count: 0 }
+    },
+    computed: {
+        countSquared() {
+            return this.count ** 2
+        }
+    },
+    methods: {
+        increment() {
+            this.count += 1
+        }
+    }
+}
+```
+
+</div>
+
+<div>
+
+### Composition API
+
+```ts {all|4|5|6-8|all}
+import { computed, ref } from 'vue'
+export default {
+    setup() {
+        const count = ref(0)
+        const increment = () => count.value += 1
+        const countSquared = computed(
+            () => count.value ** 2
+        )
+
+        return {
+            count,
+            countSquared,
+            increment
+        }
+    }
+}
+```
+
+</div>
+
+</div>
+
+---
+layout: section
+---
+
+# Sure, that's great, it can do the same thing.
+# What makes it better?
+
+---
+
+# Separation of concerns
+
+Imagine a component that has a header with a tooltip and also needs to render a list of things based on an API call.
+
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+
+### Options API
+
+```ts
+data() {
+    return {
+        isTooltipOpen: false,
+        loading: false,
+        items: []
+    }
+}
+```
+
+```ts
+computed: {
+    sortedItems() { ... }
+    tooltipTitle() { ... }
+}
+```
+
+```ts
+methods: {
+    async loadItems() { ... }
+    toggleTooltip() { ... }
+}
+```
+
+</div>
+
+<div>
+
+### Composition API
+
+```ts
+setup() {
+    // ITEMS
+    const loading = ref(false)
+    const items = ref([])
+    const sortedItems = computed(() => { ... })
+    const loadItems = () => { ... }
+    mounted(() => loadItems())
+
+    // TOOLTIP
+    const isTooltipOpen = ref(false)
+    const tooltipTitle = computed(() => { ... })
+    const toggleTooltip = () => { ... }
+
+    // Only return the items used in the template
+    // e.g. Don't return loadItems or items
+    return { ... }
+}
+```
+
+</div>
+
+</div>
+
+---
+
+# `<script setup>`
+
+[more info](https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md)
+
+```ts
+<script setup>
+import { ref, computed } from 'vue'
+
+const count = ref(0)
+const countDoubled = computed(() => count.value * 2)
+const increment = () => count.value += 1
+</script>
+```
+
+All of these constants become available in the template.
+
+---
+layout: section
+---
+
+# Great, sign me up!
+
+---
+
 # Migration
 
-[Link](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat)
+1. Remove [deprecated](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat#preparations) [syntax](https://vuejs.org/v2/guide/components-slots.html#Deprecated-Syntax) for slots
+1. Upgrade to compat version (Vue 3.1)
+1. Upgrade related dependencies (vuex, vue-router, vue-i18n)
+1. Resolve [incompatible](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat#incompatible) and [partially compatible](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat#partially-compatible-with-caveats) issues
+1. Refactor app and components over time to remove features removed from Vue 3
+1. Update eslint plugins to vue3 plugins
+
+[Full migration guide](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat)
