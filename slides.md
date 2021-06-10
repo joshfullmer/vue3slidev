@@ -396,3 +396,4 @@ layout: section
 1. Update eslint plugins to vue3 plugins
 
 [Full migration guide](https://v3.vuejs.org/guide/migration/migration-build.html#overview)
+[Additional information for Keap's migration](https://docs.google.com/document/d/1fqBDxTSLfthQ-Ts9g65S1bsxuREjo49snlbFK4iEAj4/edit)
