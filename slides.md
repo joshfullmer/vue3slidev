@@ -388,11 +388,11 @@ layout: section
 
 # Migration
 
-1. Remove [deprecated](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat#preparations) [syntax](https://vuejs.org/v2/guide/components-slots.html#Deprecated-Syntax) for slots
+1. Remove [deprecated](https://v3.vuejs.org/guide/migration/migration-build.html#preparations) [syntax](https://vuejs.org/v2/guide/components-slots.html#Deprecated-Syntax) for slots
 1. Upgrade to compat version (Vue 3.1)
-1. Resolve [incompatible](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat#incompatible) and [partially compatible](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat#partially-compatible-with-caveats) issues
+1. Resolve [incompatible](https://v3.vuejs.org/guide/migration/migration-build.html#incompatible) and [partially compatible](https://v3.vuejs.org/guide/migration/migration-build.html#partially-compatible-with-caveats) issues
 1. Upgrade related dependencies (vuex, vue-router, vue-i18n)
 1. Refactor app and components over time to remove features removed from Vue 3
 1. Update eslint plugins to vue3 plugins
 
-[Full migration guide](https://github.com/vuejs/vue-next/tree/master/packages/vue-compat)
+[Full migration guide](https://v3.vuejs.org/guide/migration/migration-build.html#overview)
