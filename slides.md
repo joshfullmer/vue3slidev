@@ -101,13 +101,13 @@ Multiple root nodes! 🎉
 
 ---
 
-# Object API vs. Composition API
+# Options API vs. Composition API
 
 <div class="grid grid-cols-2 gap-4">
 
 <div>
 
-### Object API
+### Options API
 
 ```ts {all|2-4|10-14|5-9|all}
 export default {
