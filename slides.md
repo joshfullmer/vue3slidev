@@ -203,7 +203,7 @@ export const useTooltip = () => {
 import useTooltip from './tooltip'
 export default {
     setup() {
-        const { isOpen, toggle } = useTooltip
+        const { isOpen, toggle } = useTooltip()
 
         // Other component logic
 
