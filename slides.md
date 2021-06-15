@@ -144,7 +144,6 @@ export default {
         )
 
         return {
-            count,
             countSquared,
             increment
         }
