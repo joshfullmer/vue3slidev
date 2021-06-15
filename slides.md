@@ -165,6 +165,59 @@ layout: section
 
 ---
 
+# Composables
+
+Consider a pattern that is used frequently: managing tooltip behavior.
+
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+
+```ts
+export default {
+    data() {
+        return { isTooltipOpen: false }
+    },
+    methods() {
+        toggleTooltip() {
+            this.isTooltipOpen = !this.isTooltipOpen
+        }
+    }
+}
+```
+
+</div>
+
+<div>
+
+```ts
+// tooltip.js
+export const useTooltip = () => {
+    const isOpen = ref(false)
+    const toggle = () => isOpen.value = !isOpen.value
+
+    return { isOpen, toggle }
+}
+
+// Component.vue
+import useTooltip from './tooltip'
+export default {
+    setup() {
+        const { isOpen, toggle } = useTooltip
+
+        // Other component logic
+
+        return { isOpen, toggle }
+    }
+}
+```
+
+</div>
+
+</div>
+
+---
+
 # Separation of concerns
 
 Imagine a component that has a header with a tooltip and also needs to render a list of things based on an API call.
