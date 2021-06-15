@@ -432,6 +432,27 @@ const { broadcast } = defineProps<{
 </div>
 
 ---
+
+# Type safety for event emissions
+
+Consider a component that emits a value that is selected by the user
+
+```ts
+export default defineComponent({
+    emits: {
+        select(payload: { value: string; label: string; }) { ... }
+    },
+    setup(props, { emit }) {
+        const onClick = (() => {
+            emit('select', { somethingElse: 0 }) // throws compilation error
+        })
+
+        return { onClick }
+    }
+})
+```
+
+---
 layout: section
 ---
 
